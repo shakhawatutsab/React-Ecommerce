@@ -6,14 +6,11 @@ import MainHeader from './Header/MainHeader';
 const Header = () => {
   return (
     <>
-    <SVG />
-    {/* Mobile Header */}
-    <MobileHeader />
-    {/* /.header-mobile */}
 
-    {/* Main Header  */}
-    < MainHeader />
-    {/* End Main Header */}
+    <SVG />
+    <MobileHeader />
+    <MainHeader />
+    
     </>
   )
 }
