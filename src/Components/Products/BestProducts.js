@@ -8,7 +8,7 @@ const BestProducts = () => {
 
   const getProducts = async () => {
       const response = await axios.get("http://localhost:8000/api/products");
-      setAllProducts(response.data);
+      setAllProducts(response.data.data);
     };
 
   useEffect(() => {
@@ -96,7 +96,6 @@ const BestProducts = () => {
                       price={product.price}
                       description={product.description}
                       category={product.category}
-
                   />
                 ))}
                 {/* Single Product Ends here */}
