@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const SingleProductCard = () => {
+const SingleProductCard = ({title, price, description, image}) => {
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3">
@@ -15,7 +15,7 @@ const SingleProductCard = () => {
                         <a href="product1_simple.html">
                         <img
                             loading="lazy"
-                            src="https://uomo-html.flexkitux.com/images/home/demo9/product-1-1.jpg"
+                            src={ image }
                             width="330"
                             height="400"
                             alt="Colorful Jacket"
@@ -28,7 +28,7 @@ const SingleProductCard = () => {
                         <a href="product1_simple.html">
                         <img
                             loading="lazy"
-                            src="https://uomo-html.flexkitux.com/images/home/demo9/product-1-1.jpg"
+                            src={ image }
                             width="330"
                             height="400"
                             alt="Colorful Jacket"
@@ -41,7 +41,7 @@ const SingleProductCard = () => {
                         <a href="product1_simple.html">
                         <img
                             loading="lazy"
-                            src="https://uomo-html.flexkitux.com/images/home/demo9/product-1-1.jpg"
+                            src={ image }
                             width="330"
                             height="400"
                             alt="Colorful Jacket"
@@ -93,10 +93,10 @@ const SingleProductCard = () => {
                 <div className="pc__info position-relative">
                 <p className="pc__category">Accessories</p>
                 <h6 className="pc__title mb-2">
-                    <a href="product1_simple.html">Wooden Wall Clock</a>
+                    <a href="product1_simple.html">{title}</a>
                 </h6>
                 <div className="product-card__price d-flex">
-                    <span className="money price">$29</span>
+                    <span className="money price">${price}</span>
                 </div>
 
                 <button

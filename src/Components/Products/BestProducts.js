@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SingleProductCard from './SingleProductCard';
 import axios from 'axios';
+
 const BestProducts = () => {
 
-  const products = async () => {
-      const response = await axios.get("http://localhost:8000/api/products"
+  const [allProducts, setAllProducts] = useState([]);
 
-      );
-      console.log(response.data);
-  };
+  const getProducts = async () => {
+      const response = await axios.get("http://localhost:8000/api/products");
+      setAllProducts(response.data);
+    };
+
   useEffect(() => {
-      products();
-  });
+      getProducts();
+  }, []);
 
   return (
     <>
@@ -86,7 +88,15 @@ const BestProducts = () => {
           >
             <div className="row">
                 {/* Single Product Starts here */}
-                <SingleProductCard />
+                {allProducts.map((product) => (
+                   <SingleProductCard
+                      title={product.name}
+                      image={product.image}
+                      price={product.price}
+                      description={product.description}
+
+                  />
+                ))}
                 {/* Single Product Ends here */}
               
             </div>
@@ -106,6 +116,6 @@ const BestProducts = () => {
       {/* /.products-grid */}
     </>
   )
-}
+};
 
 export default BestProducts;
