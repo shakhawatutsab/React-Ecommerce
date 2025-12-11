@@ -88,12 +88,14 @@ const BestProducts = () => {
           >
             <div className="row">
                 {/* Single Product Starts here */}
-                {allProducts.map((product) => (
+                {allProducts.map((product,index) => (
                    <SingleProductCard
+                        key={index}
                       title={product.name}
                       image={product.image}
                       price={product.price}
                       description={product.description}
+                      category={product.category}
 
                   />
                 ))}

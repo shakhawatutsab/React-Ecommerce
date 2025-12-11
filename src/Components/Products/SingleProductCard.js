@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleProductCard = ({title, price, description, image}) => {
+const SingleProductCard = ({title, price, image, category}) => {
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3">
@@ -91,7 +91,7 @@ const SingleProductCard = ({title, price, description, image}) => {
                 </div>
 
                 <div className="pc__info position-relative">
-                <p className="pc__category">Accessories</p>
+                <p className="pc__category">{category.name}</p>
                 <h6 className="pc__title mb-2">
                     <a href="product1_simple.html">{title}</a>
                 </h6>
