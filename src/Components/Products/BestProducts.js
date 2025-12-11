@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SingleProductCard from './SingleProductCard';
+import axios from 'axios';
 const BestProducts = () => {
+
+  const products = async () => {
+      const response = await axios.get("http://localhost:8000/api/products"
+
+      );
+      console.log(response.data);
+  };
+  useEffect(() => {
+      products();
+  });
+
   return (
     <>
       <section className="products-carousel container">
