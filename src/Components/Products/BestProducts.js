@@ -90,7 +90,8 @@ const BestProducts = () => {
                 {/* Single Product Starts here */}
                 {allProducts.map((product,index) => (
                    <SingleProductCard
-                        key={index}
+                      key={index}
+                      id={product.id}
                       title={product.name}
                       image={product.image}
                       price={product.price}

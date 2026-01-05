@@ -14,6 +14,7 @@ import SingleProductMain from '../Components/Products/SingleProductMain';
 
 const SingleProduct = () => {
     const { id } = useParams();
+    
   return (
     <>
     <Header />

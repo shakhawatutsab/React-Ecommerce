@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios';
+import { useState } from 'react';
 
-const SingleProductMain = () => {
+const SingleProductMain = (props) => {
+    const { id } = props;
+    const [product, setProduct] = useState({}); 
+    // Send api request axious to get the product details by id
+    const getProduct = async () => {
+
+        const response = await axios.get(
+          "http://localhost:8000/api/products/" +id
+        );
+
+        console.log(response.data);
+        setProduct(response.data);
+    };
+    useEffect(() => {
+        getProduct();
+    }, []);
   return (
+    
     <>
     <main style={{ paddingTop: "90px" }}>
     <div className="mb-md-1 pb-md-3"></div>
@@ -13,8 +31,8 @@ const SingleProductMain = () => {
               <div className="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" style={{ cursor: 'grab' }}>
                 <div className="swiper-wrapper" id="swiper-wrapper-14f05c1383efa65e" aria-live="polite" style={{ transform: 'translate3d(0px, 0px, 0px)' }}>
                   <div className="swiper-slide product-single__image-item swiper-slide-active" role="group" aria-label="1 / 4" style={{ width: '454px', marginRight: '32px' }}>
-                    <img loading="lazy" className="h-auto" src="https://uomo-html.flexkitux.com/images/products/product_0.jpg" width="674" height="674" alt="" />
-                    <a data-fancybox="gallery" href="https://uomo-html.flexkitux.com/images/products/product_0.jpg" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Zoom">
+                    <img loading="lazy" className="h-auto" src={product.image} width="674" height="674" alt="" />
+                    <a data-fancybox="gallery" href={product.image} data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Zoom">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_zoom"></use></svg>
                     </a>
                   </div>
@@ -44,7 +62,7 @@ const SingleProductMain = () => {
             <div className="product-single__thumbnail">
               <div className="swiper-container swiper-container-initialized swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs swiper-container-vertical">
                 <div className="swiper-wrapper" id="swiper-wrapper-25b93ab6a913f599" aria-live="polite"style={{ height: '103.925px', transform: 'translate3d(0px, 0px, 0px)' }}>
-                  <div className="swiper-slide product-single__image-item swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style={{ height: 113.5 }}><img loading="lazy" className="h-auto" src="https://uomo-html.flexkitux.com/images/products/product_0.jpg" width="104" height="104" alt="" /></div>
+                  <div className="swiper-slide product-single__image-item swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style={{ height: 113.5 }}><img loading="lazy" className="h-auto" src={product.image} width="104" height="104" alt="" /></div>
                   <div className="swiper-slide product-single__image-item swiper-slide-next" role="group" aria-label="2 / 4" style={{ height: 113.5 }}><img loading="lazy" className="h-auto" src="https://uomo-html.flexkitux.com/images/products/product_0-1.jpg" width="104" height="104" alt="" /></div>
                   <div className="swiper-slide product-single__image-item" role="group" aria-label="3 / 4" style={{ height: 113.5 }}><img loading="lazy" className="h-auto" src="https://uomo-html.flexkitux.com/images/products/product_0-2.jpg" width="104" height="104" alt="" /></div>
                   <div className="swiper-slide product-single__image-item" role="group" aria-label="4 / 4" style={{ height: 113.5 }}><img loading="lazy" className="h-auto" src="https://uomo-html.flexkitux.com/images/products/product_0-3.jpg" width="104" height="104" alt="" /></div>
@@ -66,7 +84,7 @@ const SingleProductMain = () => {
               <a href="product2_variable.html" className="text-uppercase fw-medium"><span className="menu-link menu-link_us-s">Next</span><svg className="mb-1px" width="10" height="10" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><use href="#icon_next_md"></use></svg></a>
             </div>{/* /.shop-acs */}
           </div>
-          <h1 className="product-single__name">Lightweight Puffer Jacket With a Hood</h1>
+          <h1 className="product-single__name">{product.name}</h1>
           <div className="product-single__rating">
             <div className="reviews-group d-flex">
               <svg className="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg"><use href="#icon_star"></use></svg>
@@ -78,10 +96,10 @@ const SingleProductMain = () => {
             <span className="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
           </div>
           <div className="product-single__price">
-            <span className="current-price">$449</span>
+            <span className="current-price">${product.price}</span>
           </div>
           <div className="product-single__short-desc">
-            <p>Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget.</p>
+            <p>{product.description}</p>
           </div>
           <form name="addtocart-form" method="post">
             <div className="product-single__addtocart">

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SingleProductCard = ({title, price, image, category}) => {
+const SingleProductCard = ({id,title, price, image, category}) => {
   return (
     <>
       <div className="col-6 col-md-4 col-lg-3">
@@ -12,7 +13,7 @@ const SingleProductCard = ({title, price, image, category}) => {
                 >
                     <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                        <a href="product1_simple.html">
+                        <Link to={"/product/"+id}>
                         <img
                             loading="lazy"
                             src={ image }
@@ -21,7 +22,7 @@ const SingleProductCard = ({title, price, image, category}) => {
                             alt="Colorful Jacket"
                             className="pc__img"
                         />
-                        </a>
+                        </Link>
                     </div>
                     {/* /.pc__img-wrapper */}
                     <div className="swiper-slide">
