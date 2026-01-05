@@ -14,7 +14,10 @@ import SingleProductMain from '../Components/Products/SingleProductMain';
 
 const SingleProduct = () => {
     const { id } = useParams();
-    
+    // scroll to top when component is mounted
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <>
     <Header />
